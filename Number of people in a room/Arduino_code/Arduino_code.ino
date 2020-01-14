@@ -1,6 +1,6 @@
 int total = 0;
 int k=8,l=9;
-int led;
+int led=10;
 void setup() {
   pinMode(k, INPUT);
   pinMode(l, INPUT);
