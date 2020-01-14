@@ -17,7 +17,6 @@ void loop() {
       if(c>1000) goto a;
     }
     total++;
-    Serial.println(total);
   }
   if(digitalRead(k)==0){
     int c=0;
@@ -29,7 +28,15 @@ void loop() {
     total--;
    
   }
+  if(total>5){
+    Serial.println("Room Full");
+  }
+  else if(total<0){
+    total=0;
+  }
+  else{
   analogWrite(led,total*51);
+  }
    Serial.println(total);
    delay(500);
 }
