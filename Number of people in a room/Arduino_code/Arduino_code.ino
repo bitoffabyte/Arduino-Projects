@@ -1,6 +1,6 @@
 int total = 0;
-int k=8,l=9;
-int led=10;
+int k=8,l=7;
+int led=11;
 void setup() {
   pinMode(k, INPUT);
   pinMode(l, INPUT);
@@ -9,23 +9,18 @@ void setup() {
   analogWrite(led,0);
 }
 void loop() {
-  a:
-  if(digitalRead(l)==0){
-    int c=0;
-    while(digitalRead(k)==0){
-      c++;
-      if(c>1000) goto a;
+  if(digitalRead(l)==LOW){
+    while(digitalRead(k)==HIGH){
     }
     total++;
+    delay(1000);
   }
-  if(digitalRead(k)==0){
-    int c=0;
-    while(digitalRead(l)==0){
-      c++;
-      if(c>1000) goto a;
+  if(digitalRead(k)==LOW){
+    while(digitalRead(l)==HIGH){
     }
     Serial.println("DOWN");
     total--;
+    delay(1000);
    
   }
   if(total>5){
@@ -38,5 +33,4 @@ void loop() {
   analogWrite(led,total*51);
   }
    Serial.println(total);
-   delay(500);
 }
